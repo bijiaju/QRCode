@@ -7,7 +7,7 @@
 <title>批量二维码处理</title>
 <style type="text/css">
 #loading {
-width:170px;
+width:200px;
 height:25px;
 border:3px solid #C3DAF9;
 position:absolute;
@@ -46,17 +46,53 @@ $(document).ready(function(){
 	
 	$("#transpng").click(function(){
 		
+		var texts = $(":text");
+		var srcAddress = $(texts[0]).val();
+		var desAddress = $(texts[1]).val();
+		var width = $(texts[2]).val();
+		var hight = $(texts[3]).val();
+		var whiteEdge = $(texts[4]).val();
+		var error = $("select option:selected").val();
+		//alert(error);
+		$.ajax({
+				async: true,
+				beforeSend: function () {
+				ShowDiv();
+				},
+				complete: function () {
+				HiddenDiv();
+				},
+				type : 'POST' ,
+				url : '${pageContext.request.contextPath}/QRCodeServlet?method=transpng',
+				data : {
+				"srcAddress":srcAddress,
+				"desAddress":desAddress,
+				"width":width,
+				"hight":hight,
+				"whiteEdge":whiteEdge,
+				"error":error
+				},
+				success: function (backDate) {
+					var backDatas = backDate.split('_');
+							//$.each(backDatas,function(index,value){
+							     //alert(index+"..."+value);
+							  var $img = $("<h2  style='color:red;'>"+backDate+"</h2>");
+							$("#tip2").text("");
+		  				  $("#tip2").append($img);
+		    }
+		});
+
 			//var username = $(":text").val();//哈哈
 		//var password = $(":password").val();//123
 		//${pageContext.request.contextPath }/food?method=findFoodType
-		var url = "${pageContext.request.contextPath}/QRCodeServlet?method=transpng";
+		//var url = "${pageContext.request.contextPath}/QRCodeServlet?method=transpng";
 		/*手工写JSON文本
 		var sendData = {
 			"username" : username,
 			"password" : password
 		};
 		*/
-		var sendData = $("form").serialize();
+		/* var sendData = $("form").serialize();
 		$.post(url,sendData,function(backDate){
 			//alert(backDate);
 			//backDate：
@@ -66,18 +102,63 @@ $(document).ready(function(){
 			var $img = $("<h2  style='color:red;'>"+backDate+"</h2>");
 			$("#tip2").text("");
 		    $("#tip2").append($img);
-		});
+		}); */
 	});
+		
 	$("#getResult").click(function(){
-		var url = "${pageContext.request.contextPath}/QRCodeServlet?method=batchProcessQR";
+		
+		var texts = $(":text");
+		var srcAddress = $(texts[0]).val();
+		var desAddress = $(texts[1]).val();
+		var width = $(texts[2]).val();
+		var hight = $(texts[3]).val();
+		var whiteEdge = $(texts[4]).val();
+		var error = $("select option:selected").val();
+		//alert(error);
+		$.ajax({
+				async: true,
+				beforeSend: function () {
+				ShowDiv();
+				},
+				complete: function () {
+				HiddenDiv();
+				},
+				type : 'POST' ,
+				url : '${pageContext.request.contextPath}/QRCodeServlet?method=batchProcessQR',
+				data : {
+				"srcAddress":srcAddress,
+				"desAddress":desAddress,
+				"width":width,
+				"hight":hight,
+				"whiteEdge":whiteEdge,
+				"error":error
+				},
+				success: function (backDate) {
+					var backDatas = backDate.split('_');
+							//$.each(backDatas,function(index,value){
+							     //alert(index+"..."+value);
+							     var $img = $("<h2  style='color:green;'>"+backDatas[1]+"</h2>");
+									$("#tip1").text("");
+								    $("#tip1").append($img);
+								    var $img = $("<h2  style='color:red;'>"+backDatas[0]+"</h2>");
+									$("#tip2").text("");
+								    $("#tip2").append($img);
+				}
+		});
+		
+		
+		
+		
+		
+		//var url = "${pageContext.request.contextPath}/QRCodeServlet?method=batchProcessQR";
 		/*手工写JSON文本
 		var sendData = {
 			"username" : username,
 			"password" : password
 		};
 		*/
-		var sendData = $("form").serialize();
-		$.post(url,sendData,function(backDate){
+		//var sendData = $("form").serialize();
+		//$.post(url,sendData,function(backDate){
 			
 			//alert(backDate);
 			//backDate：
@@ -86,18 +167,18 @@ $(document).ready(function(){
 			//如果服务器返回xml，即backDate就是object，要解析	
 			//var $img = $("<img src='"+backDate+"' width='14px' height='14px'>");<h1>This is a heading</h1>
 		
-			var backDatas = backDate.split('_');
+		//	var backDatas = backDate.split('_');
 			//$.each(backDatas,function(index,value){
 			     //alert(index+"..."+value);
-			     var $img = $("<h2  style='color:green;'>"+backDatas[1]+"</h2>");
+			  /*    var $img = $("<h2  style='color:green;'>"+backDatas[1]+"</h2>");
 					$("#tip1").text("");
 				    $("#tip1").append($img);
 				    var $img = $("<h2  style='color:red;'>"+backDatas[0]+"</h2>");
 					$("#tip2").text("");
-				    $("#tip2").append($img);
+				    $("#tip2").append($img); */
 			//});
 			
-		});
+		//});
 	});
 });
 </script>
@@ -154,6 +235,6 @@ $(document).ready(function(){
 	</form>
     <center><button id="transpng" style="width:200px; height:100px;">格式化图片</button>
      <button id="getResult" style="width:200px; height:100px;">生成二维码</button></center>
-     <div id="loading"><img src="${pageContext.request.contextPath}/style/img/2012032811155512.gif" alt=""/>正在加载数据,请稍候...</div>
+     <div id="loading"><img src="${pageContext.request.contextPath}/style/img/comm.gif" alt=""/>正在处理数据,请稍候...</div>
     </body>
 </html>
