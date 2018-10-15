@@ -31,7 +31,7 @@ text-align:center;
 }
 
 </style>
-<script type="text/javascript"  src="/QR1/jquery.js"></script>
+<script type="text/javascript"  src="${pageContext.request.contextPath}/style/js/jquery.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	//显示加载数据
