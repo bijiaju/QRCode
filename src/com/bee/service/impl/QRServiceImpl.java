@@ -51,9 +51,9 @@ public class QRServiceImpl {
 	 */
 	public static String calFee(){
 		StringBuilder sb = new StringBuilder();
-		sb.append("截止本次共解析生成二维码个数"+processSum+"个，");
-		sb.append("付费个数"+weiweiCount+"个，");
-		sb.append("免费个数"+freeCount+"个，");
+		sb.append("截止本次共使用解析生成二维码服务"+processSum+"次，");
+		sb.append("付费"+weiweiCount+"次，");
+		sb.append("免费"+freeCount+"次，");
 		sb.append("为您节省"+freeCount*0.001+"元");
 		return sb.toString();
 		
