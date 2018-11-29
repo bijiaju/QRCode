@@ -58,5 +58,5 @@ public class CommonContants {
     /**
      * 服务器地址
      */
-    public static final String AppKey  = "25107670";
+    public static final String AppKey  "";
 }
