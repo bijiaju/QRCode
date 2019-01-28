@@ -46,17 +46,17 @@ public class CommonContants {
     public static final int IMG_HEIGHT  = 400;
     
     /**
-     * 付费服务号
-     */
-    public static final String AppCode  = "12ea6794139246c4b3003a8cdee2d0db";
-    
-    /**
-     * 服务器地址
-     */
-    public static final String AppSecret  = "76be856e8507bdc6f50e5894b01ab3a8";
-    
-    /**
-     * 服务器地址
-     */
-    public static final String AppKey  = "25107670";
+    * 付费服务号
+    */
+   public static final String AppCode  = "12ea6794139246c4b3003a8cdee2d0db";
+
+   /**
+    * 服务器地址
+    */
+   public static final String AppSecret  = "76be856e8507bdc6f50e5894b01ab3a8";
+
+   /**
+    * 服务器地址
+    */
+   public static final String AppKey  = "25107670";
 }
