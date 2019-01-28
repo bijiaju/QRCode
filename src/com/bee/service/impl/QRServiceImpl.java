@@ -54,15 +54,16 @@ public class QRServiceImpl {
 		sb.append("截止本次共解析生成二维码个数"+processSum+"个，");
 		sb.append("付费个数"+weiweiCount+"个，");
 		sb.append("免费个数"+freeCount+"个，");
-		sb.append("为您节省"+freeCount*0.001+"元");
+		//sb.append("为您节省"+freeCount*0.001+"元");
 		return sb.toString();
 		
 	}
 
 	
 	public static String transQR(String srcAddress,String desAddress,int width,int height,String error,int whiteEdge){
-		String result = "";
 		long startTime=System.currentTimeMillis();
+		String result = "";
+		result+= transPNG(srcAddress,desAddress)+"我是分隔符哈哈哈";
 		//2.执行二维码处理
 		  ArrayList<String> lossInfos = new ArrayList<String>();//记录失败的个数
 		  File[] files = new File(srcAddress).listFiles();
@@ -82,17 +83,18 @@ public class QRServiceImpl {
 	  				}
 	        	}
 	      }	
-	        result+="提示:您好，桌面图片个数"+(sucNum+losNum)+"个，成功"+sucNum+"个，失败"+(losNum)+"个。";
+     	   result+="提示:识别图片总数"+(sucNum+losNum)+"个，成功"+sucNum+"个，失败"+(losNum)+"个, ";
+     	
 	        if(lossInfos.size()!=0){
-	        	result+="识别失败图片为：\n";
+	        	result+="识别失败图片为:";
 	        	 for(int i=0;i<lossInfos.size();i++){
 	        		 result+=lossInfos.get(i)+";\n";
 	        	 }
 	        }
 	        long endTime=System.currentTimeMillis();
 	        float excTime=(float)(endTime-startTime)/1000;
-	        result+="执行时间："+excTime+"秒_";
-	        result+=calFee();
+	        result+="执行时间："+excTime+"秒";
+	        //result+=calFee();
 	        return result;
 	}
 	
@@ -291,9 +293,9 @@ public class QRServiceImpl {
         }
          return resMatrix;
     }
-	public String transPNG(String srcAddress, String desAddress) {
+	public static String transPNG(String srcAddress, String desAddress) {
 		String result ="";
-		long startTime=System.currentTimeMillis();
+		//long startTime=System.currentTimeMillis();
 		int sucNum = 0;
 		  int losNum = 0;
 		 ArrayList<String> lossInfos = new ArrayList<String>();//记录失败的个数
@@ -313,16 +315,16 @@ public class QRServiceImpl {
 					losNum++;
 				}
 		 }
-		   result+="提示:您好，桌面jpg图片个数"+(sucNum+losNum)+"个，成功生成png个数"+sucNum+"个，失败"+(losNum)+"个\n";
+     	result+="提示:jpg图片个数"+(sucNum+losNum)+"个，成功转换png个数"+sucNum+"个，失败"+(losNum)+"个\n";
 	        if(lossInfos.size()!=0){
-	        	result+="格式化失败图片为：\n";
+	        	result+="转换失败图片为：\n";
 	        	 for(int i=0;i<lossInfos.size();i++){
 	        		 result+=lossInfos.get(i)+";\n";
 	        	 }
 	        }
-	        long endTime=System.currentTimeMillis();
-	        float excTime=(float)(endTime-startTime)/1000;
-	        result+="执行时间："+excTime+"秒";
+	       // long endTime=System.currentTimeMillis();
+	      //  float excTime=(float)(endTime-startTime)/1000;
+	       // result+="执行时间："+excTime+"秒";
 	        return result;		
 	}
 

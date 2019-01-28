@@ -31,7 +31,7 @@ text-align:center;
 }
 
 </style>
-<script type="text/javascript"  src="/QR1/jquery.js"></script>
+<script type="text/javascript"  src="${pageContext.request.contextPath}/style/js/jquery.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	//显示加载数据
@@ -134,15 +134,33 @@ $(document).ready(function(){
 				"error":error
 				},
 				success: function (backDate) {
-					var backDatas = backDate.split('_');
+					var backDatas = backDate.split('我是分隔符哈哈哈');
 							//$.each(backDatas,function(index,value){
 							     //alert(index+"..."+value);
-							     var $img = $("<h2  style='color:green;'>"+backDatas[1]+"</h2>");
-									$("#tip1").text("");
-								    $("#tip1").append($img);
-								    var $img = $("<h2  style='color:red;'>"+backDatas[0]+"</h2>");
-									$("#tip2").text("");
-								    $("#tip2").append($img);
+							    
+								    var res0 = JSON.stringify(backDatas[0]);
+								    if(res0.indexOf('转换失败图片为')>=0){//
+								    	 var $img = $("<h2  style='color:red;'>"+backDatas[0]+"</h2>");
+											$("#tip1").text("");
+										    $("#tip1").append($img);
+								    }else{
+								    	 var $img = $("<h2  style='color:green;'>"+backDatas[0]+"</h2>");
+											$("#tip1").text("");
+										    $("#tip1").append($img);
+								    }
+		   
+								    var res1 = JSON.stringify(backDatas[1]);
+								    //alert(res1);
+								    if(res1.indexOf('识别失败图片为')>=0){//
+								    	 var $img = $("<h2  style='color:red;'>"+backDatas[1]+"</h2>");
+											$("#tip2").text("");
+										    $("#tip2").append($img);
+								    }else{
+								    	 var $img = $("<h2  style='color:green;'>"+backDatas[1]+"</h2>");
+											$("#tip2").text("");
+										    $("#tip2").append($img);
+								    }
+								   
 				}
 		});
 		
@@ -233,8 +251,8 @@ $(document).ready(function(){
 		</table>
 		
 	</form>
-    <center><button id="transpng" style="width:200px; height:100px;">格式化图片</button>
-     <button id="getResult" style="width:200px; height:100px;">生成二维码</button></center>
+    <center><!-- <button id="transpng" style="width:200px; height:100px;">格式化图片</button> -->
+     <button id="getResult" style="width:200px; height:100px;">一键生成二维码</button></center>
      <div id="loading"><img src="${pageContext.request.contextPath}/style/img/comm.gif" alt=""/>正在处理数据,请稍候...</div>
     </body>
 </html>
