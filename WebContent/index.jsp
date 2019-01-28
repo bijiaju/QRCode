@@ -138,7 +138,7 @@ $(document).ready(function(){
 							//$.each(backDatas,function(index,value){
 							     //alert(index+"..."+value);
 							    
-								    var res0 = JSON.stringify(backDatas[0]);
+								    var res0 = backDatas[0];
 								    if(res0.indexOf('转换失败图片为')>=0){//
 								    	 var $img = $("<h2  style='color:red;'>"+backDatas[0]+"</h2>");
 											$("#tip1").text("");
@@ -149,7 +149,7 @@ $(document).ready(function(){
 										    $("#tip1").append($img);
 								    }
 		   
-								    var res1 = JSON.stringify(backDatas[1]);
+								    var res1 = backDatas[1];
 								    //alert(res1);
 								    if(res1.indexOf('识别失败图片为')>=0){//
 								    	 var $img = $("<h2  style='color:red;'>"+backDatas[1]+"</h2>");

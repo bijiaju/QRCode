@@ -48,7 +48,7 @@ public class CommonContants {
     /**
     * 付费服务号
     */
-   public static final String AppCode  = "12ea6794139246c4b3003a8cdee2d0db";
+   public static final String AppCode  = "12ea6794139246c4b3003a8cdee2d0db";//
 
    /**
     * 服务器地址

@@ -126,18 +126,19 @@ public class QRServiceImpl {
 	            text = parseQRCode(filePath);//免费(filePath);//解析二维码til
 	        	if(StringUtils.isEmpty(text)||"null".equals(text)){
 	        		text =decodeQrCode(filePath);//付费解析二维码til
-	        		//if(isTransed(width, height, error, whiteEdge)){
-		        	//	System.out.println("我生成图片了:-----------:");
-
-	        			generateQRCode(text, width, height, format,fileName,desAddress,error,whiteEdge);
+	        		  System.out.println("执行付费解析图片:"+fileName);
+	        		if(StringUtils.isEmpty(text)||"null".equals(text)){//抛出异常
+	                    System.out.println("付费图片为解析内容失败的是:"+text);
+	        			throw new Exception("付费图片为解析内容失败"); 
+	        		}
+	        		generateQRCode(text, width, height, format,fileName,desAddress,error,whiteEdge);
+	        	
 	        		//}
 	        		/*System.out.println("text:-----------------:"+text);
 	        		System.out.println("执行付费服务的图片是:"+fileName);
-*/	        		if(StringUtils.isEmpty(text)||"null".equals(text)){//抛出异常
-	        			throw new Exception("付费图片为解析内容失败"); 
-	        		}
+*/	        		
 	        	}else{
-	        		System.out.println("text:-----------------:"+text);
+	        		//System.out.println("text:-----------------:"+text);
 	        		//生成二维码图片，并返回图片路径
 	        		//if(isTransed(width, height, error, whiteEdge)){
 	        		//	System.out.println("我生成图片了:-----------:");
@@ -179,7 +180,7 @@ public class QRServiceImpl {
         }
         return content;
     }
-	/**
+    /**
 	 * 难点是以base6传输数据
 	 * imgFile 传输的是I一个地址下的图片文件
 	 */
@@ -216,6 +217,7 @@ public class QRServiceImpl {
 	    	//获取response的body
 	    	//System.out.println(EntityUtils.toString(response.getEntity()));
 	    	String result = EntityUtils.toString(response.getEntity());
+	    	//System.out.println(result);
 	    	JSONObject object = JSONObject.fromObject(result);
 	    	String status = object.getString("status");
 	    	// status = object.getString("status");
@@ -223,7 +225,7 @@ public class QRServiceImpl {
 	    	if("1".equals(status)){
 	    		String data = object.getString("data");
 		        String raw_text = JSONObject.fromObject(data).getString("raw_text");
-		        
+
 		        return raw_text;
 	    	}
 	    	return null;
@@ -231,8 +233,9 @@ public class QRServiceImpl {
 	    	e.printStackTrace();
 	    	return null;
 	    }
-		
+
 	}
+
 
 	
 	/**
