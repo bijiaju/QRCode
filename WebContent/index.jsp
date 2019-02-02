@@ -23,15 +23,20 @@ display:none;
 body {
 background-color:blue;
 background-image:url("${pageContext.request.contextPath}/style/img/back.jpg");
-background-repeat:no-repeat;
- background-position:40% 40%;
+background-repeat:repeat;
+ background-position:10% 10%;
 }
 #title{
 text-align:center;
 }
 
+
 </style>
+<!-- 下面是编译bootstrap用的 -->
+<link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript"  src="${pageContext.request.contextPath}/style/js/jquery.js"></script>
+
 <script type="text/javascript">
 $(document).ready(function(){
 	//显示加载数据
@@ -209,22 +214,22 @@ $(document).ready(function(){
    <!-- 
 		在异步提交的方式下，form标签的action和method属性没有意义
 	-->
-	<form action="" method="">
-		<table border="2" align="center">
+	<form action="" method="" class="bs-example bs-example-form">
+		<table class="table table-bordered"  align="center">
 			<tr>
 				<th>图片来源地址</th>
-				<td><input type="text" name="srcAddress"  value="C:/Users/bee/Desktop"/></td>
+				<td><input type="text" class="form-control" name="srcAddress"  value="C:/Users/bee/Desktop"/></td>
 				<td></td>
 			</tr>
 			<tr>
 				<th>图片目标地址</th>
-				<td><input type="text" name="desAddress" value="C:/Users/bee/Desktop"/></td>
+				<td><input type="text" class="form-control" name="desAddress" value="C:/Users/bee/Desktop"/></td>
 				<td></td>
 			</tr>
 			<tr>
 				<th>容错率</th>
 				<td>
-				       <select name="error" >
+				       <select name="error" class="form-control">
   							<option value="25%">25%</option>
   							<option value="7%">7%</option>
   							<option value="30%">30%</option>
@@ -235,24 +240,26 @@ $(document).ready(function(){
 			</tr>
 			<tr>
 				<th>二维码宽</th>
-				<td><input type="text" name="width" value="400"/></td>
+				<td><input type="text" class="form-control" name="width" value="400"/></td>
 				<td>像素</td>
 			</tr>
 			<tr>
 				<th>二维码高</th>
-				<td><input type="text" name="hight"  value="400"/></td>
+				<td><input type="text" class="form-control" name="hight"  value="400"/></td>
 				<td>像素</td>
 			</tr>
 			<tr>
 				<th>二维码白边</th>
-				<td><input type="text" name="whiteEdge"  value="10"/></td>
+				<td><input type="text" class="form-control" name="whiteEdge"  value="10"/></td>
 				<td>数越小，白边越小</td>
 			</tr>
 		</table>
 		
 	</form>
     <center><!-- <button id="transpng" style="width:200px; height:100px;">格式化图片</button> -->
-     <button id="getResult" style="width:200px; height:100px;">一键生成二维码</button></center>
+     <button id="getResult" class="btn btn-success btn-primary btn-lg btn-block">一键生成二维码</button></center>
      <div id="loading"><img src="${pageContext.request.contextPath}/style/img/comm.gif" alt=""/>正在处理数据,请稍候...</div>
+     
+	
     </body>
 </html>
