@@ -30,6 +30,7 @@ background-repeat:repeat;
 text-align:center;
 }
 
+table { font-size:20px; }
 
 </style>
 <!-- 下面是编译bootstrap用的 -->
@@ -217,17 +218,17 @@ $(document).ready(function(){
 	<form action="" method="" class="bs-example bs-example-form">
 		<table class="table table-bordered"  align="center">
 			<tr>
-				<th>图片来源地址</th>
+				<th class="text-muted">图片来源地址</th>
 				<td><input type="text" class="form-control" name="srcAddress"  value="C:/Users/bee/Desktop"/></td>
 				<td></td>
 			</tr>
 			<tr>
-				<th>图片目标地址</th>
+				<th class="text-primary">图片目标地址</th>
 				<td><input type="text" class="form-control" name="desAddress" value="C:/Users/bee/Desktop"/></td>
 				<td></td>
 			</tr>
 			<tr>
-				<th>容错率</th>
+				<th class="text-success">容错率</th>
 				<td>
 				       <select name="error" class="form-control">
   							<option value="25%">25%</option>
@@ -239,19 +240,19 @@ $(document).ready(function(){
 				<td></td>
 			</tr>
 			<tr>
-				<th>二维码宽</th>
+				<th class="text-info">二维码宽</th>
 				<td><input type="text" class="form-control" name="width" value="400"/></td>
 				<td>像素</td>
 			</tr>
 			<tr>
-				<th>二维码高</th>
+				<th class="text-warning">二维码高</th>
 				<td><input type="text" class="form-control" name="hight"  value="400"/></td>
-				<td>像素</td>
+				<td >像素</td>
 			</tr>
 			<tr>
-				<th>二维码白边</th>
+				<th class="text-danger">二维码白边</th>
 				<td><input type="text" class="form-control" name="whiteEdge"  value="10"/></td>
-				<td>数越小，白边越小</td>
+				<td >数越小，白边越小</td>
 			</tr>
 		</table>
 		
