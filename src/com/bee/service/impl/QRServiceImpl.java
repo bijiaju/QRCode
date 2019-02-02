@@ -83,17 +83,17 @@ public class QRServiceImpl {
 	  				}
 	        	}
 	      }	
-     	   result+="提示:识别图片总数"+(sucNum+losNum)+"个，成功"+sucNum+"个，失败"+(losNum)+"个, ";
+     	   result+="提示:识别图片总数"+(sucNum+losNum)+"个，成功"+sucNum+"个，失败"+(losNum)+"个。 ";
      	
 	        if(lossInfos.size()!=0){
 	        	result+="识别失败图片为:";
 	        	 for(int i=0;i<lossInfos.size();i++){
-	        		 result+=lossInfos.get(i)+";\n";
+	        		 result+=lossInfos.get(i)+"、\n";
 	        	 }
 	        }
 	        long endTime=System.currentTimeMillis();
 	        float excTime=(float)(endTime-startTime)/1000;
-	        result+="执行时间："+excTime+"秒";
+	        result+="执行"+excTime+"秒";
 	        //result+=calFee();
 	        return result;
 	}
@@ -318,11 +318,11 @@ public class QRServiceImpl {
 					losNum++;
 				}
 		 }
-     	result+="提示:jpg图片个数"+(sucNum+losNum)+"个，成功转换png个数"+sucNum+"个，失败"+(losNum)+"个\n";
+     	result+="提示:转换png图片总数"+(sucNum+losNum)+"个，成功"+sucNum+"个，失败"+(losNum)+"个\n";
 	        if(lossInfos.size()!=0){
 	        	result+="转换失败图片为：\n";
 	        	 for(int i=0;i<lossInfos.size();i++){
-	        		 result+=lossInfos.get(i)+";\n";
+	        		 result+=lossInfos.get(i)+"、\n";
 	        	 }
 	        }
 	       // long endTime=System.currentTimeMillis();
