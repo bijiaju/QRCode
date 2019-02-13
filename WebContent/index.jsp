@@ -250,8 +250,8 @@ $(document).ready(function(){
 				<td >像素</td>
 			</tr>
 			<tr>
-				<th class="text-danger">二维码白边</th>
-				<td><input type="text" class="form-control" name="whiteEdge"  value="10"/></td>
+				<th class="text-danger"><label for="wihteEdge">二维码白边</label></th>
+				<td><input type="text" class="form-control" name="whiteEdge"  value="10" id="wihteEdge"/></td>
 				<td >数越小，白边越小</td>
 			</tr>
 		</table>
